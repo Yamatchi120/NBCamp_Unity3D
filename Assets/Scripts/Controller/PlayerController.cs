@@ -4,12 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    float baseSpeed = 5f;
+    public float baseSpeed;
 
     float moveX;
     float moveZ;
 
-    Vector3 movement;
+    Vector2 movement;
+    Vector3 currentMove;
 
     private Rigidbody _rb;
 
@@ -20,19 +21,34 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        GetInput();
+        //GetInput();
         Move();
     }
 
-    private void GetInput()
+    //private void GetInput()
+    //{
+    //    moveX = Input.GetAxisRaw("Horizontal");
+    //    moveZ = Input.GetAxisRaw("Vertical");
+    //}
+    //private void Move()
+    //{
+    //    movement = new Vector3(moveX, 0, moveZ);
+    //    transform.Translate(movement * Time.deltaTime * baseSpeed);
+    //}
+    void Move()
     {
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveZ = Input.GetAxisRaw("Vertical");
-    }
-    private void Move()
-    {
-        movement = new Vector3(moveX, 0, moveZ);
-        transform.Translate(movement * Time.deltaTime * baseSpeed);
-    }
+        Vector3 dir = transform.forward * currentMove.y +
+                      transform.right * currentMove.x;
+        dir *= baseSpeed;
+        dir.y = _rb.velocity.y;
 
+        _rb.velocity = dir;
+    }
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            currentMove = context.ReadValue<Vector2>();
+        else if(context.phase == InputActionPhase.Canceled)
+            currentMove = Vector2.zero;
+    }
 }
