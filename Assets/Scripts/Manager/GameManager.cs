@@ -2,23 +2,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private  static GameManager _instance;
-
     public PlayerController playerController;
+    private  static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                GameObject go = new GameObject("GameManager");
+                _instance = go.AddComponent<GameManager>();
+                DontDestroyOnLoad(go);
+            }
+            return _instance;
+        }
+    }
 
     private void Awake()
     {
-        Init();
-    }
-
-    void Init()
-    {
         if (_instance == null)
         {
-            _instance = new GameObject("GameManager").AddComponent<GameManager>();
+            _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            playerController = FindObjectOfType<PlayerController>();
+            if (playerController == null)
+                playerController = FindObjectOfType<PlayerController>();
         }
         else
         {

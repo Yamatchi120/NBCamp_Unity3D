@@ -3,20 +3,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerController playerController;
-
     [Header("Movement")]
-    public float moveSpeed;
-    Vector2 currentMoveInput;
+    float baseSpeed = 5f;
+
+    float moveX;
+    float moveZ;
+
+    Vector3 movement;
 
     private Rigidbody _rb;
-
-    public Player _player;
-    public Player Player
-    {
-        get { return _player; }
-        set { _player = value; }
-    }
 
     private void Start()
     {
@@ -25,26 +20,19 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        GetInput();
         Move();
     }
 
-    void Move()
+    private void GetInput()
     {
-        Vector3 dir = transform.forward * currentMoveInput.y + transform.right * currentMoveInput.x;
-        dir *= moveSpeed;
-        dir.y = _rb.velocity.y;
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveZ = Input.GetAxisRaw("Vertical");
+    }
+    private void Move()
+    {
+        movement = new Vector3(moveX, 0, moveZ);
+        transform.Translate(movement * Time.deltaTime * baseSpeed);
+    }
 
-        _rb.velocity = dir;
-    }
-    void OnMove(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            currentMoveInput = context.ReadValue<Vector2>();
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            currentMoveInput = Vector2.zero;
-        }
-    }
 }
