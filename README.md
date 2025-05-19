@@ -1,5 +1,13 @@
 # NBCamp_Unity3D
 ### [프로젝트 기획 노션](https://tough-jasmine-54c.notion.site/1f52397b2e6d80dbb4f9d228173504d8?pvs=74)
+
+< 예상 개발 기간 >
+- 기획<br>
+    - 5월 16일 ~ 5월 17일<br>
+- 필수 기능 개발<br>
+    - 5월 18일 ~ 5월 20일<br>
+- 도전 기능 개발<br>
+    - 5월 21일 ~ 5월 23일<br>
 ## GameView
 Null
 <br>
