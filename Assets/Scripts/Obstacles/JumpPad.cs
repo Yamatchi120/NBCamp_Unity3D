@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JumpPad : MonoBehaviour
@@ -15,16 +14,22 @@ public class JumpPad : MonoBehaviour
     }
     public void OnJumpPad()
     {
-        player.Rb.AddForce(Vector3.up * obstacleJumpPower);
+        player.Rb.AddForce(Vector3.up * obstacleJumpPower, ForceMode.Impulse);
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("jump");
             anim.SetBool("isJumpPadActivate", true);
             OnJumpPad();
-
+            StartCoroutine(ResetJumpPad());
         }
+    }
+
+    IEnumerator ResetJumpPad()
+    {
+        yield return new WaitForSeconds(3f);
+        anim.SetBool("isJumpPadActivate", false);
     }
 }
