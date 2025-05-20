@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float baseSpeed;
-    public float baseJumpPower;
     Vector3 currentMove;
     public LayerMask groundLayerMask;
 
@@ -18,11 +17,17 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity;
     private Vector2 mouseDelta;
 
-    private Rigidbody _rb;
+    private float baseJumpPower = 15f;
+    public float BaseJumpPower
+    {
+        get { return baseJumpPower; }
+        set { baseJumpPower *= value; }
+    }
+    public Rigidbody Rb { get; private set; }
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
     }
     private void FixedUpdate()
@@ -39,9 +44,9 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = transform.forward * currentMove.y +
                       transform.right * currentMove.x;
         dir *= baseSpeed;
-        dir.y = _rb.velocity.y;
+        dir.y = Rb.velocity.y;
 
-        _rb.velocity = dir;
+        Rb.velocity = dir;
     }
     void CameraLook()
     {
@@ -68,7 +73,7 @@ public class PlayerController : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Started)
         {
-            _rb.AddForce(Vector2.up * baseJumpPower, ForceMode.Impulse);
+            Rb.AddForce(Vector2.up * baseJumpPower, ForceMode.Impulse);
         }
     }
 }

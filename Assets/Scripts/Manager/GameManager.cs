@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerController playerController;
-    private  static GameManager _instance;
+    #region ΩÃ±€≈Ê
+    private static GameManager _instance;
     public static GameManager Instance
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 GameObject go = new GameObject("GameManager");
                 _instance = go.AddComponent<GameManager>();
@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+    #endregion
+    private PlayerController playerController;
+    public PlayerController PlayerController => playerController;
+    private JumpPad jumpPad;
+    public JumpPad JumpPad => jumpPad;
+
 
     private void Awake()
     {
@@ -25,8 +31,7 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            if (playerController == null)
-                playerController = FindObjectOfType<PlayerController>();
+            playerController = FindObjectOfType<PlayerController>();
         }
         else
         {
@@ -36,5 +41,9 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+    }
+    private void Start()
+    {
+
     }
 }
