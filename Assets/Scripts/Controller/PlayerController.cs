@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,12 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float baseSpeed;
-
-    float moveX;
-    float moveZ;
-
-    Vector2 movement;
+    public float baseJumpPower;
     Vector3 currentMove;
+    public LayerMask groundLayerMask;
+
+    [Header("Look")]
+    public Transform cameraContainer;
+    public float minXLook;
+    public float maxXLook;
+    private float camCurXRot;
+    public float lookSensitivity;
+    private Vector2 mouseDelta;
 
     private Rigidbody _rb;
 
@@ -21,20 +27,13 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //GetInput();
         Move();
     }
+    private void LateUpdate()
+    {
+        CameraLook();
+    }
 
-    //private void GetInput()
-    //{
-    //    moveX = Input.GetAxisRaw("Horizontal");
-    //    moveZ = Input.GetAxisRaw("Vertical");
-    //}
-    //private void Move()
-    //{
-    //    movement = new Vector3(moveX, 0, moveZ);
-    //    transform.Translate(movement * Time.deltaTime * baseSpeed);
-    //}
     void Move()
     {
         Vector3 dir = transform.forward * currentMove.y +
@@ -44,11 +43,32 @@ public class PlayerController : MonoBehaviour
 
         _rb.velocity = dir;
     }
-    private void OnMove(InputAction.CallbackContext context)
+    void CameraLook()
+    {
+        camCurXRot += mouseDelta.y * lookSensitivity;
+        camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
+        cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
+
+        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+    }
+    public void OnMove(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
             currentMove = context.ReadValue<Vector2>();
         else if(context.phase == InputActionPhase.Canceled)
             currentMove = Vector2.zero;
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        mouseDelta = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            _rb.AddForce(Vector2.up * baseJumpPower, ForceMode.Impulse);
+        }
     }
 }
