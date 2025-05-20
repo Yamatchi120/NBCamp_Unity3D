@@ -6,7 +6,8 @@ public class JumpPad : MonoBehaviour
     PlayerController player;
     Animator anim;
 
-    private float obstacleJumpPower = 20f;
+    [SerializeField]
+    private float obstacleJumpPower = 15f;
     private void Start()
     {
         player = GameManager.Instance.PlayerController;
@@ -15,6 +16,8 @@ public class JumpPad : MonoBehaviour
     public void OnJumpPad()
     {
         player.Rb.AddForce(Vector3.up * obstacleJumpPower, ForceMode.Impulse);
+        //player.Rb.velocity = new Vector3(player.Rb.velocity.x, obstacleJumpPower,
+        //                    player.Rb.velocity.z);
     }
 
     private void OnCollisionEnter(Collision collision)
