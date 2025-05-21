@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    
+    private PlayerUI playerUI;
+    public PlayerUI PlayerUI => playerUI;
+    public void Init()
+    {
+        playerUI = FindAnyObjectByType<PlayerUI>();
+    }
 }
