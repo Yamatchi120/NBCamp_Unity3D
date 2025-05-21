@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     //public ObstacleManager ObstacleManager => obstacleManager;
     private ItemManager itemManager;
     public ItemManager ItemManager => itemManager;
+    private UIManager uIManager;
+    public UIManager UIManager => uIManager;
     private JumpPad jumpPad;
     public JumpPad JumpPad => jumpPad;
     #endregion
