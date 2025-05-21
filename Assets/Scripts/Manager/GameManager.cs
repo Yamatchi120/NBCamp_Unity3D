@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     //public ObstacleManager ObstacleManager => obstacleManager;
     private ItemManager itemManager;
     public ItemManager ItemManager => itemManager;
-    private UIManager uIManager;
-    public UIManager UIManager => uIManager;
+    private UIManager uiManager;
+    public UIManager UIManager => uiManager;
     private JumpPad jumpPad;
     public JumpPad JumpPad => jumpPad;
     #endregion
@@ -37,8 +37,6 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-
-            playerManager = FindObjectOfType<PlayerManager>();
         }
         else
         {
@@ -48,9 +46,17 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+
+        playerManager = FindObjectOfType<PlayerManager>();
+        //obstacleManager = FindObjectOfType<ObstacleManager>();
+        uiManager = FindObjectOfType<UIManager>();
+
+
     }
     private void Start()
     {
-
+        playerManager.Init();
+        //obstacleManager.Init();
+        //uiManager.Init();
     }
 }

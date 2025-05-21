@@ -23,10 +23,16 @@ public class PlayerController : MonoBehaviour
         set { baseJumpPower *= value; }
     }
     private float currentHp;
-    public float CurrnetHp
+    public float CurrentHp
     {
         get { return currentHp; }
-        set { CurrnetHp = value; }
+        set { CurrentHp = value; }
+    }
+    private float maxHp;
+    public float MaxHp
+    {
+        get { return maxHp; }
+        set { maxHp = value; }
     }
 
     public Rigidbody Rb { get; private set; }

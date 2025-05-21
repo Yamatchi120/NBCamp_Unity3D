@@ -2,13 +2,12 @@
 
 //public class ObstacleManager : MonoBehaviour
 //{
-//    private PlayerManager playerManager;
-//    public PlayerManager PlayerManager => playerManager;
 //    private JumpPad jumpPad;
 //    public JumpPad JumpPad => jumpPad;
-
-//    private void Awake()
+//    private PlayerController playerController;
+//    public PlayerController PlayerController => playerController;
+//    public void Init()
 //    {
-//        playerManager = GameManager.Instance.PlayerManager;
+//        jumpPad = FindAnyObjectByType<JumpPad>();
 //    }
 //}

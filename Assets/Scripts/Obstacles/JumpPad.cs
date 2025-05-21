@@ -4,9 +4,8 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     PlayerManager playerManager;
-    //ObstacleManager obstacleManager;
     //Animator anim;
-
+    
     [SerializeField] private float obstacleJumpPower = 15f;
     private void Awake()
     {
