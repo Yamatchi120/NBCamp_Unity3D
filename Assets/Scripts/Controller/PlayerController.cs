@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity;
     private Vector2 mouseDelta;
 
+    Animator anim;
     private float baseJumpPower = 15f;
     public float BaseJumpPower
     {
@@ -25,14 +25,24 @@ public class PlayerController : MonoBehaviour
     }
     public Rigidbody Rb { get; private set; }
 
+    private void Awake()
+    {
+        
+    }
     private void Start()
     {
         Rb = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
+
         Cursor.lockState = CursorLockMode.Locked;
     }
     private void FixedUpdate()
     {
         Move();
+    }
+    private void Update()
+    {
+
     }
     private void LateUpdate()
     {
@@ -59,9 +69,15 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
+        {
             currentMove = context.ReadValue<Vector2>();
+            anim.SetBool("isRun", true);
+        }
         else if(context.phase == InputActionPhase.Canceled)
+        {
             currentMove = Vector2.zero;
+            anim.SetBool("isRun", false);
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -71,9 +87,39 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if(context.phase == InputActionPhase.Started && isGrounded())
         {
             Rb.AddForce(Vector2.up * baseJumpPower, ForceMode.Impulse);
+            anim.SetBool("isJump", true);
+            anim.SetTrigger("doJump");
+        }
+    }
+        
+    bool isGrounded()
+    {
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
+        };
+
+        for(int i = 0; i < rays.Length; i++)
+        {
+            if (Physics.Raycast(rays[i], 0.2f, groundLayerMask))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("GroundObj"))
+        {
+            anim.SetBool("isJump", false);
         }
     }
 }
