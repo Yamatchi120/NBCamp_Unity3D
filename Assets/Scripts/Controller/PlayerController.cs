@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,6 +39,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+    }
+    private void Update()
+    {
+
     }
     private void LateUpdate()
     {
@@ -91,7 +94,7 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("doJump");
         }
     }
-
+        
     bool isGrounded()
     {
         Ray[] rays = new Ray[4]
@@ -114,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("GroundObj"))
         {
             anim.SetBool("isJump", false);
         }
