@@ -5,7 +5,6 @@ public class PlayerManager : MonoBehaviour
     private PlayerController playerController;
     public PlayerController PlayerController => playerController;
     public Rigidbody PlayerRb => playerController.Rb;
-    public float currentHp => playerController.CurrentHp;
     public float maxHp => playerController.MaxHp;
     public void Init()
     {

@@ -57,6 +57,6 @@ public class GameManager : MonoBehaviour
     {
         playerManager.Init();
         //obstacleManager.Init();
-        //uiManager.Init();
+        uiManager.Init();
     }
 }

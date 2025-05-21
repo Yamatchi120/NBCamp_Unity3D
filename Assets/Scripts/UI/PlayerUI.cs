@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Image hpFillImg;
-    PlayerManager playerManager;
+    PlayerController playerController;
     private void Start()
     {
-        playerManager = GameManager.Instance.PlayerManager;
+        playerController = GameManager.Instance.PlayerManager.PlayerController;
     }
-    public void SetHp(float currentHp, float maxHp)
+    public void SetHp()
     {
-        float fillAmount = currentHp / maxHp;
+        float fillAmount = playerController.CurrentHp / playerController.MaxHp;
 
         if (hpFillImg != null)
             hpFillImg.fillAmount = fillAmount;

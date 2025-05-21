@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public float CurrentHp
     {
         get { return currentHp; }
-        set { CurrentHp = value; }
+        set { currentHp = value; }
     }
     private float maxHp;
     public float MaxHp
