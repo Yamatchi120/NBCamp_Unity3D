@@ -8,11 +8,19 @@ public class JumpPad : MonoBehaviour
 
     [SerializeField]
     private float obstacleJumpPower = 15f;
+<<<<<<< Updated upstream
+=======
+    private void Awake()
+    {
+        
+    }
+>>>>>>> Stashed changes
     private void Start()
     {
         player = GameManager.Instance.PlayerController;
         anim = GetComponent<Animator>();
     }
+
     public void OnJumpPad()
     {
         player.Rb.AddForce(Vector3.up * obstacleJumpPower, ForceMode.Impulse);
