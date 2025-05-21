@@ -4,13 +4,13 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     PlayerManager playerManager;
+    ObstacleManager obstacleManager;
     Animator anim;
 
-    [SerializeField]
-    private float obstacleJumpPower = 15f;
+    [SerializeField] private float obstacleJumpPower = 15f;
     private void Awake()
     {
-       //playerManager = GameManager.Instance.PlayerManager;
+
     }
     private void Start()
     {
@@ -20,8 +20,6 @@ public class JumpPad : MonoBehaviour
     public void OnJumpPad()
     {
         playerManager.PlayerRb.AddForce(Vector3.up * obstacleJumpPower, ForceMode.Impulse);
-        //player.Rb.velocity = new Vector3(player.Rb.velocity.x, obstacleJumpPower,
-        //                    player.Rb.velocity.z);
     }
 
     private void OnCollisionEnter(Collision collision)

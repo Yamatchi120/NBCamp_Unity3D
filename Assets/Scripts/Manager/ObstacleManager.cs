@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-
+    private JumpPad jumpPad;
+    public JumpPad JumpPad => jumpPad;
 }
