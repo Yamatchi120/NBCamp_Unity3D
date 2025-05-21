@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    #region ½Ì±ÛÅæ
+    #region Singleton
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -18,11 +18,12 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-    private PlayerController playerController;
-    public PlayerController PlayerController => playerController;
+    #region Manager Management
+    private PlayerManager playerManager;
+    public PlayerManager PlayerManager => playerManager;
     private JumpPad jumpPad;
     public JumpPad JumpPad => jumpPad;
-
+    #endregion
 
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            playerController = FindObjectOfType<PlayerController>();
+            playerManager = FindObjectOfType<PlayerManager>();
         }
         else
         {

@@ -3,19 +3,23 @@ using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
-    PlayerController player;
+    PlayerManager playerManager;
     Animator anim;
 
     [SerializeField]
     private float obstacleJumpPower = 15f;
+    private void Awake()
+    {
+       //playerManager = GameManager.Instance.PlayerManager;
+    }
     private void Start()
     {
-        player = GameManager.Instance.PlayerController;
+        playerManager = GameManager.Instance.PlayerManager;
         anim = GetComponent<Animator>();
     }
     public void OnJumpPad()
     {
-        player.Rb.AddForce(Vector3.up * obstacleJumpPower, ForceMode.Impulse);
+        playerManager.PlayerRb.AddForce(Vector3.up * obstacleJumpPower, ForceMode.Impulse);
         //player.Rb.velocity = new Vector3(player.Rb.velocity.x, obstacleJumpPower,
         //                    player.Rb.velocity.z);
     }
