@@ -1,9 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using UnityEngine;
 
-public class ObstacleManager : MonoBehaviour
-{
-    private JumpPad jumpPad;
-    public JumpPad JumpPad => jumpPad;
-}
+//public class ObstacleManager : MonoBehaviour
+//{
+//    private PlayerManager playerManager;
+//    public PlayerManager PlayerManager => playerManager;
+//    private JumpPad jumpPad;
+//    public JumpPad JumpPad => jumpPad;
+
+//    private void Awake()
+//    {
+//        playerManager = GameManager.Instance.PlayerManager;
+//    }
+//}

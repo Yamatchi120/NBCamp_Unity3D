@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     #region Manager Management
     private PlayerManager playerManager;
     public PlayerManager PlayerManager => playerManager;
-    private ObstacleManager obstacleManager;
-    public ObstacleManager ObstacleManager => obstacleManager;
+    //private ObstacleManager obstacleManager;
+    //public ObstacleManager ObstacleManager => obstacleManager;
+    private ItemManager itemManager;
+    public ItemManager ItemManager => itemManager;
     private JumpPad jumpPad;
     public JumpPad JumpPad => jumpPad;
     #endregion

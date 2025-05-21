@@ -4,8 +4,8 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     PlayerManager playerManager;
-    ObstacleManager obstacleManager;
-    Animator anim;
+    //ObstacleManager obstacleManager;
+    //Animator anim;
 
     [SerializeField] private float obstacleJumpPower = 15f;
     private void Awake()
@@ -15,7 +15,7 @@ public class JumpPad : MonoBehaviour
     private void Start()
     {
         playerManager = GameManager.Instance.PlayerManager;
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
     public void OnJumpPad()
     {
@@ -26,15 +26,15 @@ public class JumpPad : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            anim.SetBool("isJumpPadActivate", true);
+            //anim.SetBool("isJumpPadActivate", true);
             OnJumpPad();
-            StartCoroutine(ResetJumpPad());
+            //StartCoroutine(ResetJumpPad());
         }
     }
 
-    IEnumerator ResetJumpPad()
-    {
-        yield return new WaitForSeconds(3f);
-        anim.SetBool("isJumpPadActivate", false);
-    }
+    //IEnumerator ResetJumpPad()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    anim.SetBool("isJumpPadActivate", false);
+    //}
 }

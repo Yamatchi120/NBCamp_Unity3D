@@ -16,14 +16,21 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity;
     private Vector2 mouseDelta;
 
-    Animator anim;
     private float baseJumpPower = 15f;
     public float BaseJumpPower
     {
         get { return baseJumpPower; }
         set { baseJumpPower *= value; }
     }
+    private float currentHp;
+    public float CurrnetHp
+    {
+        get { return currentHp; }
+        set { CurrnetHp = value; }
+    }
+
     public Rigidbody Rb { get; private set; }
+    Animator anim;
 
     private void Awake()
     {

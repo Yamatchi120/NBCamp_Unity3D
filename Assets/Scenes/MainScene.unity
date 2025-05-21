@@ -220,7 +220,14 @@ PrefabInstance:
       value: _Environments
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 477601333910844052, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
+    - {fileID: 2436946094128169341, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
+    - {fileID: 2375874079548837608, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
+    - {fileID: 6646244078403855905, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
+    - {fileID: 6237615626629334010, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
+    - {fileID: 6971124529238104281, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
+    - {fileID: 40888004595169483, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 302f9270c40ea514c921b423eea7347c, type: 3}
@@ -419,6 +426,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &932904685
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2027252540413258662, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: obstacleJumpPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326983302888978997, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_Name
+      value: JumpPad (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3817280997182032815, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5721dd89931a24342927412168fe13ea, type: 3}
 --- !u!1 &1629767159
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +540,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027252540413258662, guid: 5721dd89931a24342927412168fe13ea, type: 3}
+      propertyPath: obstacleJumpPower
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7326983302888978997, guid: 5721dd89931a24342927412168fe13ea, type: 3}
       propertyPath: m_Name
       value: JumpPad (1)
@@ -530,7 +603,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2027252540413258662, guid: 5721dd89931a24342927412168fe13ea, type: 3}
       propertyPath: obstacleJumpPower
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7182790940438665296, guid: 5721dd89931a24342927412168fe13ea, type: 3}
       propertyPath: m_Center.y
@@ -550,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: -11.23
       objectReference: {fileID: 0}
     - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
       propertyPath: m_LocalPosition.y
@@ -558,7 +631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -52.57
+      value: -10.47
       objectReference: {fileID: 0}
     - target: {fileID: 8319293282205315441, guid: 5721dd89931a24342927412168fe13ea, type: 3}
       propertyPath: m_LocalRotation.w
@@ -602,5 +675,6 @@ SceneRoots:
   - {fileID: 193921919}
   - {fileID: 3838943861293400335}
   - {fileID: 1709558275}
+  - {fileID: 932904685}
   - {fileID: 927641236}
   - {fileID: 1629767161}
