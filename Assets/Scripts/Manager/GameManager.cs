@@ -18,18 +18,8 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-<<<<<<< Updated upstream
     private PlayerController playerController;
     public PlayerController PlayerController => playerController;
-=======
-    #region Manager Management
-    private PlayerManager playerManager;
-    public PlayerManager PlayerManager => playerManager;
-    private ItemManager itemManager;
-    public ItemManager ItemManager => itemManager;
-    private ObstacleManager obstacleManager;
-    public ObstacleManager ObstacleManager => obstacleManager;
->>>>>>> Stashed changes
     private JumpPad jumpPad;
     public JumpPad JumpPad => jumpPad;
 
