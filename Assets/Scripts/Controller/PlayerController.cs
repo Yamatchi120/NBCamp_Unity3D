@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, IDamage, IJump
+public class PlayerController : BaseStatus, IDamage, IJump
 {
     [Header("Movement")]
     public float baseSpeed;
@@ -16,31 +16,12 @@ public class PlayerController : MonoBehaviour, IDamage, IJump
     public float lookSensitivity;
     private Vector2 mouseDelta;
 
-    private float baseJumpPower = 15f;
-    public float BaseJumpPower
-    {
-        get { return baseJumpPower; }
-        set { baseJumpPower *= value; }
-    }
-    private float currentHp;
-    public float CurrentHp
-    {
-        get { return currentHp; }
-        set { currentHp = value; }
-    }
-    private float maxHp = 100.0f;
-    public float MaxHp
-    {
-        get { return maxHp; }
-        set { maxHp = value; }
-    }
-
     public Rigidbody Rb { get; private set; }
     Animator anim;
 
-    private void Awake()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
     private void Start()
     {
@@ -48,16 +29,10 @@ public class PlayerController : MonoBehaviour, IDamage, IJump
         anim = GetComponentInChildren<Animator>();
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        currentHp = maxHp;
     }
     private void FixedUpdate()
     {
         Move();
-    }
-    private void Update()
-    {
-
     }
     private void LateUpdate()
     {
@@ -104,7 +79,7 @@ public class PlayerController : MonoBehaviour, IDamage, IJump
     {
         if(context.phase == InputActionPhase.Started && isGrounded())
         {
-            Rb.AddForce(Vector2.up * baseJumpPower, ForceMode.Impulse);
+            Jump(Vector3.up, BaseJumpPower);
             anim.SetBool("isJump", true);
             anim.SetTrigger("doJump");
         }
@@ -131,8 +106,10 @@ public class PlayerController : MonoBehaviour, IDamage, IJump
     }
     public void TakeDamage(float amount)
     {
-        currentHp -= amount;
-        Debug.Log($"데미지 : {amount}\n현재 HP : {currentHp}/{maxHp}");
+        CurrentHp -= amount;
+        Debug.Log($"데미지 : {amount}\n현재 HP : {CurrentHp}/{MaxHp}");
+
+        GameManager.Instance.UIManager.PlayerUI.SetHp();
     }
     public void Jump(Vector3 direction, float power)
     {

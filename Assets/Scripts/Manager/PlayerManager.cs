@@ -1,13 +1,12 @@
-using UnityEngine;
+//using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
-{
-    private PlayerController playerController;
-    public PlayerController PlayerController => playerController;
-    public Rigidbody PlayerRb => playerController.Rb;
-    public float maxHp => playerController.MaxHp;
-    public void Init()
-    {
-        playerController = FindAnyObjectByType<PlayerController>();
-    }
-}
+//public class PlayerManager : MonoBehaviour
+//{
+//    private PlayerController playerController;
+//    public PlayerController PlayerController => playerController;
+//    public Rigidbody PlayerRb => playerController.Rb;
+//    public void Init()
+//    {
+//        playerController = FindAnyObjectByType<PlayerController>();
+//    }
+//}

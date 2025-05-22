@@ -6,6 +6,6 @@ public class UIManager : MonoBehaviour
     public PlayerUI PlayerUI => playerUI;
     public void Init()
     {
-        playerUI = FindAnyObjectByType<PlayerUI>();
+        playerUI = FindObjectOfType<PlayerUI>();
     }
 }

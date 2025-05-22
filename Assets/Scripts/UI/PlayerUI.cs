@@ -7,11 +7,10 @@ public class PlayerUI : MonoBehaviour
     PlayerController playerController;
     private void Start()
     {
-        playerController = GameManager.Instance.PlayerManager.PlayerController;
+        playerController = GameManager.Instance.PlayerController;
     }
     public void SetHp()
     {
-        Debug.Log("SetHp");
         float fillAmount = playerController.CurrentHp / playerController.MaxHp;
 
         if (hpFillImg != null)

@@ -19,16 +19,18 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Manager Management
-    private PlayerManager playerManager;
-    public PlayerManager PlayerManager => playerManager;
+    //[SerializeField] private PlayerManager playerManager;
+    //public PlayerManager PlayerManager => playerManager;
     //private ObstacleManager obstacleManager;
     //public ObstacleManager ObstacleManager => obstacleManager;
-    private ItemManager itemManager;
-    public ItemManager ItemManager => itemManager;
-    private UIManager uiManager;
-    public UIManager UIManager => uiManager;
-    private JumpPad jumpPad;
-    public JumpPad JumpPad => jumpPad;
+    [SerializeField] private PlayerController _playerController;
+    public PlayerController PlayerController => _playerController;
+    private ItemManager _itemManager;
+    public ItemManager ItemManager => _itemManager;
+    private UIManager _uiManager;
+    public UIManager UIManager => _uiManager;
+    private JumpPad _jumpPad;
+    public JumpPad JumpPad => _jumpPad;
     #endregion
 
     private void Awake()
@@ -47,16 +49,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        playerManager = FindObjectOfType<PlayerManager>();
         //obstacleManager = FindObjectOfType<ObstacleManager>();
-        uiManager = FindObjectOfType<UIManager>();
-
+        _playerController = FindObjectOfType<PlayerController>();
+        _uiManager = FindObjectOfType<UIManager>();
 
     }
     private void Start()
     {
-        playerManager.Init();
         //obstacleManager.Init();
-        uiManager.Init();
+        _uiManager.Init();
     }
 }
