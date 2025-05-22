@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179387287}
+  - component: {fileID: 179387288}
   m_Layer: 0
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -159,6 +160,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &179387288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179387286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3305af627791748b53c2be218de2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpFillImg: {fileID: 0}
 --- !u!1001 &193921919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -670,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690f2cd3d24a9d84c9f31d10105f99d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrapDamage: 10
+  damageAmount: 10
 --- !u!1 &887125524
 GameObject:
   m_ObjectHideFlags: 0

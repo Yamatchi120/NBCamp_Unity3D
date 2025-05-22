@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class JumpPad : MonoBehaviour
@@ -25,8 +24,11 @@ public class JumpPad : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            IJump jumper = collision.gameObject.GetComponent<IJump>();
+            if (jumper != null) jumper.Jump(Vector3.up, obstacleJumpPower);
+
             //anim.SetBool("isJumpPadActivate", true);
-            OnJumpPad();
+
             //StartCoroutine(ResetJumpPad());
         }
     }

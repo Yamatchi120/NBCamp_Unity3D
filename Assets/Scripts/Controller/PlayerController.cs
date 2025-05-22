@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamage, IJump
 {
     [Header("Movement")]
     public float baseSpeed;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         get { return currentHp; }
         set { currentHp = value; }
     }
-    private float maxHp;
+    private float maxHp = 100.0f;
     public float MaxHp
     {
         get { return maxHp; }
@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        currentHp = maxHp;
     }
     private void FixedUpdate()
     {
@@ -127,6 +129,15 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+    public void TakeDamage(float amount)
+    {
+        currentHp -= amount;
+        Debug.Log($"데미지 : {amount}\n현재 HP : {currentHp}/{maxHp}");
+    }
+    public void Jump(Vector3 direction, float power)
+    {
+        Rb.AddForce(direction * power, ForceMode.Impulse);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -135,4 +146,5 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isJump", false);
         }
     }
+
 }

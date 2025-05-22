@@ -11,6 +11,7 @@ public class PlayerUI : MonoBehaviour
     }
     public void SetHp()
     {
+        Debug.Log("SetHp");
         float fillAmount = playerController.CurrentHp / playerController.MaxHp;
 
         if (hpFillImg != null)
