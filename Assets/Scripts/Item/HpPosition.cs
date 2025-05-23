@@ -1,5 +1,3 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HpPosition : MonoBehaviour 
@@ -14,7 +12,7 @@ public class HpPosition : MonoBehaviour
             if (heal != null)
             {
                 heal.Heal(healAmount);
-                gameObject.SetActive(false);
+                Destroy(gameObject);
 
             }
         }

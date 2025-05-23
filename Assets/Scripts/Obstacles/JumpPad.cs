@@ -1,13 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
-    //Animator anim;
+    Animator anim;
     
     [SerializeField] private float obstacleJumpPower;
     private void Start()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -17,15 +18,15 @@ public class JumpPad : MonoBehaviour
             IJump jumper = collision.gameObject.GetComponent<IJump>();
             if (jumper != null) jumper.Jump(Vector3.up, obstacleJumpPower);
 
-            //anim.SetBool("isJumpPadActivate", true);
+            anim.SetBool("isJumpPadActivate", true);
 
-            //StartCoroutine(ResetJumpPad());
+            StartCoroutine(ResetJumpPad());
         }
     }
 
-    //IEnumerator ResetJumpPad()
-    //{
-    //    yield return new WaitForSeconds(3f);
-    //    anim.SetBool("isJumpPadActivate", false);
-    //}
+    IEnumerator ResetJumpPad()
+    {
+        yield return new WaitForSeconds(3f);
+        anim.SetBool("isJumpPadActivate", false);
+    }
 }
