@@ -19,10 +19,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region Manager Management
-    //[SerializeField] private PlayerManager playerManager;
-    //public PlayerManager PlayerManager => playerManager;
-    //private ObstacleManager obstacleManager;
-    //public ObstacleManager ObstacleManager => obstacleManager;
     [SerializeField] private PlayerController _playerController;
     public PlayerController PlayerController => _playerController;
     private ItemManager _itemManager;
@@ -49,14 +45,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //obstacleManager = FindObjectOfType<ObstacleManager>();
         _playerController = FindObjectOfType<PlayerController>();
         _uiManager = FindObjectOfType<UIManager>();
+        _itemManager = FindObjectOfType<ItemManager>();
 
     }
     private void Start()
     {
-        //obstacleManager.Init();
         _uiManager.Init();
     }
 }

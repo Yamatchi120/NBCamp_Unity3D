@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : BaseStatus, IDamage, IJump
+public class PlayerController : BaseStatus, IDamage, IJump, IHeal
 {
     [Header("Movement")]
     public float baseSpeed;
@@ -107,13 +107,18 @@ public class PlayerController : BaseStatus, IDamage, IJump
     public void TakeDamage(float amount)
     {
         CurrentHp -= amount;
-        Debug.Log($"데미지 : {amount}\n현재 HP : {CurrentHp}/{MaxHp}");
-
         GameManager.Instance.UIManager.PlayerUI.SetHp();
+        Debug.Log($"데미지 : {amount}\n현재 HP : {CurrentHp}/{MaxHp}");
     }
     public void Jump(Vector3 direction, float power)
     {
         Rb.AddForce(direction * power, ForceMode.Impulse);
+    }
+    public void Heal(float amount)
+    {
+        CurrentHp += amount;
+        GameManager.Instance.UIManager.PlayerUI.SetHp();
+        Debug.Log($"회복량 : {amount}\n현재 HP : {CurrentHp}/{MaxHp}");
     }
 
     private void OnCollisionEnter(Collision collision)

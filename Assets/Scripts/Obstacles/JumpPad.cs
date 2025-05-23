@@ -4,15 +4,11 @@ public class JumpPad : MonoBehaviour
 {
     //Animator anim;
     
-    [SerializeField] private float obstacleJumpPower = 15f;
+    [SerializeField] private float obstacleJumpPower;
     private void Start()
     {
         //anim = GetComponent<Animator>();
     }
-    //public void OnJumpPad()
-    //{
-    //    playerManager.PlayerRb.AddForce(Vector3.up * obstacleJumpPower, ForceMode.Impulse);
-    //}
 
     private void OnCollisionEnter(Collision collision)
     {

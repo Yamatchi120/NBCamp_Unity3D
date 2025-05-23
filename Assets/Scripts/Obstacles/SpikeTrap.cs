@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
-    [SerializeField] private float damageAmount = 10.0f;
+    [SerializeField] private float damageAmount;
 
     private void Start()
     {
