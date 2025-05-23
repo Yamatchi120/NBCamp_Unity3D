@@ -8,9 +8,6 @@
     - 5월 18일 ~ 5월 20일<br>
 - 도전 기능 개발<br>
     - 5월 21일 ~ 5월 23일<br>
-## GameView
-Null
-<br>
 ## InputSystem
 <img src="https://github.com/user-attachments/assets/a90f98ae-9516-4b37-9fdb-7c01a4c29948" width="300"/><br>
 ## 와이어 프레임
