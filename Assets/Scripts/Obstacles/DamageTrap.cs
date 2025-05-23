@@ -1,14 +1,9 @@
 using UnityEngine;
 
-public class SpikeTrap : MonoBehaviour
+public class DamageTrap : MonoBehaviour
 {
     [SerializeField] private float damageAmount;
 
-    private void Start()
-    {
-
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
         // SpikeTrap에는 IDamage가 없지만
