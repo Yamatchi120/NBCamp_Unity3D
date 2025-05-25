@@ -16,6 +16,7 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
     public float lookSensitivity;
     private Vector2 mouseDelta;
 
+    [SerializeField] private float rayLength;
     public Rigidbody Rb { get; private set; }
     Animator anim;
 
@@ -29,6 +30,10 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
         anim = GetComponentInChildren<Animator>();
 
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    private void Update()
+    {
+        DrawGroundCheckRay();
     }
     private void FixedUpdate()
     {
@@ -95,7 +100,7 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
             new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
         };
 
-        for(int i = 0; i < rays.Length; i++)
+        for (int i = 0; i < rays.Length; i++)
         {
             if (Physics.Raycast(rays[i], 0.2f, groundLayerMask))
             {
@@ -104,6 +109,22 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
         }
         return false;
     }
+    void DrawGroundCheckRay()
+    {
+        Vector3[] origins = new Vector3[4]
+        {
+        transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f),
+        transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f),
+        transform.position + (transform.right * 0.2f) + (transform.up * 0.01f),
+        transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f)
+        };
+
+        for (int i = 0; i < origins.Length; i++)
+        {
+            Debug.DrawRay(origins[i], Vector3.down * rayLength, Color.red);
+        }
+    }
+
     public void TakeDamage(float amount)
     {
         CurrentHp -= amount;
