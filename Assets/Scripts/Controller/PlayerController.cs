@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : BaseStatus, IDamage, IJump, IHeal
@@ -34,6 +35,7 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
     private void Update()
     {
         DrawGroundCheckRay();
+        ObjInfo();
     }
     private void FixedUpdate()
     {
@@ -99,7 +101,7 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
             string tagName = hit.collider.tag; // 태그 이름
             GameObject hitObj = hit.collider.gameObject; // 오브젝트 전체 참조
 
-            Debug.DrawRay();
+            Debug.DrawRay(transform.position, Vector2.down * 10f, Color.blue, 1f); ;
             Debug.Log($"대상 : {objName}, 태그 : {tagName}");
         }
     }
