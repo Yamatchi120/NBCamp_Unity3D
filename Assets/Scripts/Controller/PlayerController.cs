@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : BaseStatus, IDamage, IJump, IHeal
@@ -90,6 +90,20 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
         }
     }
         
+    void ObjInfo()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, 
+                out RaycastHit hit, 1f))
+        {
+            string objName = hit.collider.name; // ì˜¤ë¸Œì íŠ¸ ì´ë¦„
+            string tagName = hit.collider.tag; // íƒœê·¸ ì´ë¦„
+            GameObject hitObj = hit.collider.gameObject; // ì˜¤ë¸Œì íŠ¸ ì „ì²´ ì°¸ì¡°
+
+            Debug.DrawRay();
+            Debug.Log($"ëŒ€ìƒ : {objName}, íƒœê·¸ : {tagName}");
+        }
+    }
+
     bool isGrounded()
     {
         Ray[] rays = new Ray[4]
@@ -129,7 +143,7 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
     {
         CurrentHp -= amount;
         GameManager.Instance.UIManager.PlayerUI.SetHp();
-        Debug.Log($"µ¥¹ÌÁö : {amount}\nÇöÀç HP : {CurrentHp}/{MaxHp}");
+        Debug.Log($"ë°ë¯¸ì§€ : {amount}\ní˜„ì¬ HP : {CurrentHp}/{MaxHp}");
     }
     public void Jump(Vector3 direction, float power)
     {
@@ -139,7 +153,7 @@ public class PlayerController : BaseStatus, IDamage, IJump, IHeal
     {
         CurrentHp += amount;
         GameManager.Instance.UIManager.PlayerUI.SetHp();
-        Debug.Log($"È¸º¹·® : {amount}\nÇöÀç HP : {CurrentHp}/{MaxHp}");
+        Debug.Log($"íšŒë³µëŸ‰ : {amount}\ní˜„ì¬ HP : {CurrentHp}/{MaxHp}");
     }
 
     private void OnCollisionEnter(Collision collision)
